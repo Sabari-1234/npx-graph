@@ -1,0 +1,39 @@
+<ngx-graph
+  class="chart-container"
+  [minZoomLevel]="minZoomLevel"
+  [maxZoomLevel]="maxZoomLevel"
+  [autoZoom]="autoZoom"
+  [autoCenter]="autoCenter"
+  [panOnZoom]="panOnZoom"
+  [zoomLevel]="zoomLevel"
+  [draggingEnabled]="draggingEnabled"
+  [panningEnabled]="panningEnabled"
+  [enableZoom]="zoomEnabled"
+  [showMiniMap]="showMiniMap"
+  [view]="[1440, 1000]"
+  [zoomSpeed]="zoomSpeed"
+  [links]="links"
+  [nodes]="nodes"
+>
+  <ng-template #nodeTemplate let-node>
+    <svg:g class="node">
+      <svg:rect
+        [attr.width]="node.width || 200"
+        [attr.height]="node.height || 100"
+        [attr.fill]="node.color || 'grey'"
+        [attr.transform]="
+          'translate(' + -node.width / 2 + ', ' + -node.height / 2 + ')'
+        "
+        rx="4"
+        ry="4"
+      ></svg:rect>
+      <svg:text
+        [attr.x]="90"
+        [attr.y]="node.dimension.height / 2"
+        style="font-size: 30px"
+      >
+        {{ node.label }}
+      </svg:text>
+    </svg:g>
+  </ng-template>
+</ngx-graph>
